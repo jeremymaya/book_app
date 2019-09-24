@@ -4,8 +4,10 @@
   "description": "**Author**: Corey Marchand and Kyungrae Kim   **Version**: 1.0.0",
   "main": "server.js",
   "dependencies": {
+    "dotenv": "^8.1.0",
     "ejs": "^2.7.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "superagent": "^5.1.0"
   },
   "devDependencies": {},
   "scripts": {
