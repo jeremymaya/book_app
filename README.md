@@ -30,7 +30,8 @@ Library
 
 ## Change Log
 
-09-24-2019 9:00am - Lab initiated
+09-24-2019 9:10am - Feature -1 completed
+09-24-2019 8:30am - Lab initiated
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples: -->
 
 ## Credits and Collaborations
@@ -38,12 +39,12 @@ Library
 * Kyungrae Kim
 
 ## Time Estimate
-Number and name of feature: ________________________________
+Name of feature: Feature 01
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 1 hour
 
-Start time: _____
+Start time: 8:30am
 
-Finish time: _____
+Finish time: 9:10am
 
-Actual time needed to complete: _____
+Actual time needed to complete: 40 minutes
