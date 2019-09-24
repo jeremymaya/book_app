@@ -26,12 +26,17 @@ Languages:
 Library
 * Express
 * EJS
+* Superagent
+* dotenv
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
 
 ## Change Log
-
-09-24-2019 9:10am - Feature -1 completed
-09-24-2019 8:30am - Lab initiated
+09-24-2019 01:30am - Feature 5 completed
+09-24-2019 01:10am - Feature 4 completed
+09-24-2019 12:30am - Feature 3 completed
+09-24-2019 10:00am - Feature 2 completed
+09-24-2019 09:10am - Feature 1 completed
+09-24-2019 08:30am - Lab initiated
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples: -->
 
 ## Credits and Collaborations
@@ -39,12 +44,12 @@ Library
 * Kyungrae Kim
 
 ## Time Estimate
-Name of feature: Feature 01
+Name of feature: Lab 11
 
-Estimate of time needed to complete: 1 hour
+Estimate of time needed to complete: 4 hour
 
-Start time: 8:30am
+Start time: 08:30am
 
-Finish time: 9:10am
+Finish time: 01:30am
 
-Actual time needed to complete: 40 minutes
+Actual time needed to complete: 4 hours

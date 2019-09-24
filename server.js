@@ -6,7 +6,7 @@ const superagent = require('superagent');
 
 // Applications
 const app = express();
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3003;
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
 app.use(express.static('public'));
@@ -21,6 +21,8 @@ app.get('/', (request, response) => {
 })
 
 app.post('/searches', searchForBooks);
+
+app.use('*', (request, response)=> response.render('pages/error'));
 
 function Book(bookObj){
   const placeHolderImage = 'https://i.imgur.com/J5LVHEL.jpg';
@@ -38,16 +40,13 @@ function searchForBooks(request, response){
 
   searchingType === 'title' ? url = url+`inauthor:${searchingFor}` : url = url+`intitle:${searchingFor}`;
 
-  // if(searchingType === 'title'){
-  //   url = url+`inauthor:${searchingFor}`;
-  // } else {
-  //   url = url+`intitle:${searchingFor}`;
-  // }
-  superagent.get(url).then(result =>{
-    const library = result.body.items.map(bookObj => {
-      return new Book(bookObj);
-    })
-    response.send(library);
-  }).catch(error => console.log(error));
+  superagent
+    .get(url)
+    .then(result => result.body.items.map(bookObj => new Book(bookObj)))
+    .then(result => response.render('pages/searches/show', {searchResults: result}))
+    .catch(error => errorHandler(error, response));
 }
 
+function errorHandler(error, response){
+  response.render('pages/error');
+}
