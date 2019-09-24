@@ -1,10 +1,10 @@
-# book_app
+# LAB - Number
 
 ## Project Name
 
 I build an app with a direct and powerful purpose. It does all of the things that it accomplishes well. I should describe the purpose and functionality so those that visit my README understand the app
 
-### Author: Corey Marchand and Kyungrae Kim
+### Author: Student/Group Name
 
 ### Links and Resources
 * [submission PR](http://xyz.com)
@@ -13,8 +13,9 @@ I build an app with a direct and powerful purpose. It does all of the things tha
 ### Setup
 
 #### `.env` requirements
-* `PORT` - 3000
-* Google Books API
+* `PORT` - Port Number
+* `DATABASE_URL` - URL to the running mongo instance/db
+* any environment variables like api keys as needed
 
 #### Running the app
 * `npm start`
@@ -26,14 +27,3 @@ I build an app with a direct and powerful purpose. It does all of the things tha
 ### Reflections and Comments
 * Consider including the answers to your daily journal and submission questions here
 * This is also a good place to reflect on the tools and resources used and learned
-
-## Time Estimate
-Number and name of feature: ________________________________
-
-Estimate of time needed to complete: _____
-
-Start time: _____
-
-Finish time: _____
-
-Actual time needed to complete: _____
