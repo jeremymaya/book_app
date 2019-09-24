@@ -1,0 +1,26 @@
+{
+  "name": "book_app",
+  "version": "1.0.0",
+  "description": "**Author**: Corey Marchand and Kyungrae Kim   **Version**: 1.0.0",
+  "main": "server.js",
+  "dependencies": {
+    "ejs": "^2.7.1",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeremymaya/book_app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeremymaya/book_app/issues"
+  },
+  "homepage": "https://github.com/jeremymaya/book_app#readme"
+}
