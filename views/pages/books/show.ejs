@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <%- include('../../layouts/head') %>
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+        <%- include('../../layouts/header') %>
+    </header>
+    <main>
+        <a href="/">Back to the list</a>
+      <div data-id="<%= book.id %>" >
+        <img src= <%= book.url %> >
+        <h2><%= book.title %></h2>
+        <h3><%= book.author %></h3>
+        <p><%= book.description %></p>
+        <section>
+          <%- include('details') %>
+        </section>
+      </div> 
+    </main>
+    <footer>
+        <%- include('../../layouts/footer') %>
+    </footer>
+  </body>
+</html>

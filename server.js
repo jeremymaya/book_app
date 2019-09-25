@@ -31,6 +31,7 @@ app.get('/pages/searches/new', (request, response) => {
   response.render('pages/searches/new');
 });
 app.post('/searches', searchForBooks);
+app.get('/pages/books/:book_id', getOneBook);
 
 app.use('*', (request, response)=> response.render('pages/error'));
 
@@ -55,10 +56,10 @@ function searchForBooks(request, response){
     .get(url)
     .then(result => result.body.items.map(bookObj => new Book(bookObj)))
     .then(result => response.render('pages/searches/show', {searchResults: result}))
-    .catch(error => errorHandler(error, response));
+    .catch(error => handleError(error, response));
 }
 
-function errorHandler(error, response){
+function handleError(error, response){
   response.render('pages/error');
 }
 
@@ -70,5 +71,15 @@ function getBooks(reqeust, response) {
       console.log(result.rows.length);
       response.render('pages/searches/show', {searchResults: result.rows})
     })
-    .catch(error => errorHandler(error, response));
+    .catch(error => handleError(error, response));
+}
+
+function getOneBook (request, response) {
+  let sql = 'SELECT * FROM books WHERE id=$1;';
+  let values = [request.params.book_id];
+
+  return client
+    .query(sql, values)
+    .then(result => response.render('pages/books/show', {book: result.rows[0]}))
+    .catch(error => handleError(error, response));
 }

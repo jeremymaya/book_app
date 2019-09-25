@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  <main>
-    <div>
-      <% searchResults.forEach(book => { %>
-        <img src= <%= book.url %> >
-        <h1><%= book.title %></h1>
-        <h2><%= book.author %></h2>
-        <p><%= book.description %></p>
-      <% }) %>
-    </div>
-  </main> 
-</body>
+  <head>
+    <%- include('../../layouts/head') %>
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+        <%- include('../../layouts/header') %>
+    </header>
+    <main>
+      <div>
+        <% searchResults.forEach(book => { %>
+          <img src= <%= book.url %> >
+          <h2><%= book.title %></h2>
+          <h3><%= book.author %></h3>
+          <p><%= book.description %></p>
+          <a href="pages/books/<%= book.id %>">View Details</a>
+        <% }) %>
+      </div>
+    </main>
+    <footer>
+      <%- include('../../layouts/footer') %>
+    </footer>
+  </body>
 </html>
