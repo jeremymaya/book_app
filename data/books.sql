@@ -15,7 +15,7 @@ CREATE TABLE books (
 );
 
 INSERT INTO books (author, title, isbn, url, description, bookshelf) 
-VALUES('Erik Elgersma', 'The Strategist Analysis Cycle: Handbook', '9781911498360', 'http://books.google.com/books/content?id=BGc2DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api','DESCRIPTION1', 'BOOKSHELF');
+VALUES('Erik Elgersma', 'The Strategist Analysis Cycle: Handbook', '9781911498360', 'http://books.google.com/books/content?id=BGc2DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api','DESCRIPTION1', 'BOOKSHELF1');
 
 INSERT INTO books (author, title, isbn, url, description, bookshelf) 
-VALUES('Tara Calishainr', 'Web Search Garage', 'UOM:39076002421753', 'http://books.google.com/books/content?id=HXQDqU1zfe0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api','DESCRITPION2', 'BOOKSHELF');
+VALUES('Tara Calishainr', 'Web Search Garage', 'UOM:39076002421753', 'http://books.google.com/books/content?id=HXQDqU1zfe0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api','DESCRITPION2', 'BOOKSHELF2');
