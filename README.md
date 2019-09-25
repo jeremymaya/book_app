@@ -1,7 +1,7 @@
 # book_app
 
 **Author**: Corey Marchand and Kyungrae Kim  
-**Version**: 1.0.0
+**Version**: 1.1.0
 
 ## Overview
 This lab is to implement a basic full stack application for a book list which will include:
@@ -10,7 +10,7 @@ This lab is to implement a basic full stack application for a book list which wi
 * Render those books from a PostgreSQL database
 * Update the details of a book or remove it from the collection
 
-Lab 11 will involves requesting books from the API. The client can submit a form to search for a book by title or author, and the search results will then be rendered as a list in the browser.
+Lab 12 involves adding the ability for a user to select a book from the API search results and add it to their collection, which will be persisted in a PostgreSQL database. Then, when a user navigates to the home page of the application, all of the books will be retrieved from the database and displayed on the screen. The API search form will be accessible through the menu.
 
 ## Getting Started
 Setup an Express server
@@ -28,15 +28,13 @@ Library
 * EJS
 * Superagent
 * dotenv
+* pg
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
 
 ## Change Log
-09-24-2019 01:30am - Feature 5 completed
-09-24-2019 01:10am - Feature 4 completed
-09-24-2019 12:30am - Feature 3 completed
-09-24-2019 10:00am - Feature 2 completed
-09-24-2019 09:10am - Feature 1 completed
-09-24-2019 08:30am - Lab initiated
+09-24-2019 01:30pm - Feature 2 completed
+09-24-2019 11:00am - Feature 1 completed
+09-24-2019 09:00am - Lab 12 initiated
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples: -->
 
 ## Credits and Collaborations
@@ -44,12 +42,12 @@ Library
 * Kyungrae Kim
 
 ## Time Estimate
-Name of feature: Lab 11
+Name of feature: Lab 12
 
 Estimate of time needed to complete: 4 hour
 
-Start time: 08:30am
+Start time: 09:00am
 
 Finish time: 01:30am
 
-Actual time needed to complete: 4 hours
+Actual time needed to complete: 4.5 hours
