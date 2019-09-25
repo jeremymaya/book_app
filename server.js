@@ -27,8 +27,10 @@ app.set('view engine', 'ejs');
 
 // Routes
 app.get('/', getBooks);
-
-// app.post('/searches', searchForBooks);
+app.get('/pages/searches/new', (request, response) => {
+  response.render('pages/searches/new');
+});
+app.post('/searches', searchForBooks);
 
 app.use('*', (request, response)=> response.render('pages/error'));
 
@@ -64,6 +66,9 @@ function getBooks(reqeust, response) {
   let sql = 'SELECT * FROM books;'
   return client
     .query(sql)
-    .then(result => response.render('pages/searches/show', {searchResults: result.rows}))
+    .then(result => {
+      console.log(result.rows.length);
+      response.render('pages/searches/show', {searchResults: result.rows})
+    })
     .catch(error => errorHandler(error, response));
 }
