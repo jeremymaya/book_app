@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/styles/base.css" />
+  <title>Document</title>
+</head>
+<body>
+  <h1>Hello World</h1>
+
+  
+    <form action='/searches/' method="POST">
+      <input type="text" name="search" placeholder="title or author" required>
+      <fieldset>
+        <label for="title">
+          <span>Title</span>
+          <input type="radio" name="search" value="title" required>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <label for="author">
+          <span>Author</span>
+          <input type="radio" name="search" value="author" required>
+        </label>
+      </fieldset>
+
+      <button type="submit">Search</button>
+    </form>
+  
+</body>
+</html>
