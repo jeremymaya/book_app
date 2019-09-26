@@ -6,12 +6,12 @@ CREATE DATABASE book_app;
 DROP TABLE IF EXISTS books;
 CREATE TABLE books (
   id SERIAL PRIMARY KEY,
-  author VARCHAR(255),
-  title VARCHAR(255),
-  isbn VARCHAR(255),
-  url VARCHAR(255),
-  description VARCHAR(255),
-  bookshelf VARCHAR(255)
+  author TEXT,
+  title TEXT,
+  isbn TEXT,
+  url TEXT,
+  description TEXT,
+  bookshelf TEXT
 );
 
 INSERT INTO books (author, title, isbn, url, description, bookshelf) 
