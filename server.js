@@ -32,15 +32,29 @@ app.get('/pages/searches/new', (request, response) => {
 });
 app.post('/searches', searchForBooks);
 app.get('/pages/books/:book_id', getOneBook);
+app.get('/searches/pages/add/:book_index', saveOneBook);
 
 app.use('*', (request, response)=> response.render('pages/error'));
 
-function Book(bookObj){
+function Book(bookObj, i){
   const placeHolderImage = 'https://i.imgur.com/J5LVHEL.jpg';
   this.title = bookObj.volumeInfo.title || 'title infromation not available';
   this.author = bookObj.volumeInfo.authors || 'author information not available';
   this.description = bookObj.volumeInfo.description || 'no description available';
   this.url = bookObj.volumeInfo.imageLinks.thumbnail || placeHolderImage;
+  this.tempId = i;
+}
+
+let bookArray =[];
+
+function saveOneBook(request, response){
+  const bookIndex = request.params.book_index;
+  console.log(bookIndex);
+  console.log('I am in the save One book')
+  let sql = 'INSERT INTO books (title, author, description, url) VALUES ($1, $2, $3, $4);';
+  let values = [bookArray[bookIndex].title, bookArray[bookIndex].author, bookArray[bookIndex].description, bookArray[bookIndex].url];
+
+  client.query(sql, values);
 }
 
 function searchForBooks(request, response){
@@ -54,8 +68,17 @@ function searchForBooks(request, response){
 
   superagent
     .get(url)
-    .then(result => result.body.items.map(bookObj => new Book(bookObj)))
-    .then(result => response.render('pages/searches/show', {searchResults: result}))
+    .then(result => {
+      let i = 0;
+      return result.body.items.map(bookObj => {
+        i++;
+        return new Book(bookObj, i)
+      });
+    })
+    .then(result => {
+      bookArray = result;
+      response.render('pages/searches/show', {searchResults: result})
+    })
     .catch(error => handleError(error, response));
 }
 
@@ -69,7 +92,7 @@ function getBooks(reqeust, response) {
     .query(sql)
     .then(result => {
       console.log(result.rows.length);
-      response.render('pages/searches/show', {searchResults: result.rows})
+      response.render('pages/index', {searchResults: result.rows})
     })
     .catch(error => handleError(error, response));
 }
