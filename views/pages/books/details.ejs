@@ -1,2 +1,24 @@
-<p> <%= book.isbn %> </p>
-<p><%= book.bookshelf %></p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <%- include('../../layouts/head') %>
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+        <%- include('../../layouts/header') %>
+    </header>
+    <main>
+        <section>
+            <div data-id="<%= book.id %>" >
+              <img src= <%= book.url %>>
+              <h2><%= book.title %></h2>
+              <h3><%= book.author %></h3>
+            </div>
+          </section>
+    </main>
+    <footer>
+        <%- include('../../layouts/footer') %>
+    </footer>
+  </body>
+</html>
