@@ -1,0 +1,9 @@
+h1 {
+  color: white;
+}
+
+main > section > div > a {
+  background-color: #111111;
+  color: #ffffff;
+  text-decoration: none;
+}

@@ -2,23 +2,27 @@
 <html lang="en">
   <head>
     <%- include('../layouts/head') %>
-    <title>Document</title>
+    <title>Book App</title>
   </head>
   <body>
     <header>
         <%- include('../layouts/header') %>
     </header>
     <main>
-      <a href='pages/searches/new'>Search More Books</a>
-      <div>
-        <% searchResults.forEach(book => { %>
-          <img src= <%= book.url %> >
+      <section>
+        <p><%= savedBook %></p>
+        <h2>Saved Books</h2>
+      </section>
+      <section>
+        <% books.forEach(book => { %>
+        <div>
+          <img src= <%= book.url %>>
           <h2><%= book.title %></h2>
           <h3><%= book.author %></h3>
-          <p><%= book.description %></p>
-          <a href="pages/books/<%= book.id %>">View Details</a>
-        <% }) %>
-      </div>
+          <a href="/details/<%= book.id %>">View Details</a>
+        </div>
+          <% }) %>
+      </section>
     </main>
     <footer>
       <%- include('../layouts/footer') %>

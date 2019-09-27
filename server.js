@@ -35,39 +35,43 @@ client.on('error', err => console.error(err));
 app.set('view engine', 'ejs');
 
 // Routes
-app.get('/', getBooks);
-app.get('/pages/books/:book_id', searchDetailsIndex);
-app.get('/pages/searches/new', (request, response) => response.render('pages/searches/new'))
-app.post('/searches', searchForBooks);
-app.get('/searches/pages/books/:tempId', searchDetailsNew);
-app.post('/update/pages/books/:tempId', saveSearchedBook);
+app.get('/', loadBooks);
+app.get('/details/:book_id', detailBook);
+app.get('/search', searhBooks)
+app.post('/result', result);
+app.get('/add/:result_id', searchDetailsNew);
+app.post('/add/:result_id', saveSearchedBook);
 app.use('*', (request, response)=> response.render('pages/error'));
 
 let bookArray =[];
 
-function getBooks(reqeust, response) {
+function loadBooks(reqeust, response) {
   let sql = 'SELECT * FROM books;'
 
   return client
     .query(sql)
     .then(result => {
-      console.log(result.rows.length);
-      response.render('pages/index', {searchResults: result.rows})
+      let savedBooksNumber = result.rows.length;
+      response.render('pages/index', {books: result.rows, savedBook: savedBooksNumber})
     })
     .catch(error => handleError(error, response));
 }
 
-function searchDetailsIndex (request, response) {
+function detailBook (request, response) {
   let sql = 'SELECT * FROM books WHERE id=$1;';
   let values = [request.params.book_id];
 
   return client
     .query(sql, values)
-    .then(result => response.render('pages/books/show', {book: result.rows[0]}))
+    .then(result => response.render('pages/books/details', {book: result.rows[0]}))
     .catch(error => handleError(error, response));
 }
 
-function searchForBooks(request, response){
+function searhBooks (request, response) {
+  response.render('pages/searches/new')
+}
+
+function result(request, response){
   const searchingFor = request.body.search[0];
   const searchingType = request.body.search[1];
   let url = 'https://www.googleapis.com/books/v1/volumes?q=';
@@ -85,24 +89,23 @@ function searchForBooks(request, response){
     })
     .then(result => {
       bookArray = result;
-      response.render('pages/searches/show', {searchResults: result})
+      response.render('pages/searches/show', {books: result})
     })
     .catch(error => handleError(error, response));
 }
 
 function searchDetailsNew (request, response) {
-  console.log(bookArray[request.params.tempId]);
-  response.render('pages/books/show', {book: bookArray[request.params.tempId]})
+  response.render('pages/books/show', {book: bookArray[request.params.result_id]})
 }
 
 function saveSearchedBook (request, response){
-  const bookIndex = request.params.tempId;
+  let { author, title, isbn, url, description } = request.body;
+
   const sql = 'INSERT INTO books (author, title, isbn, url, description) VALUES ($1, $2, $3, $4, $5);';
-  const values = [bookArray[bookIndex].author, bookArray[bookIndex].title, bookArray[bookIndex].isbn, bookArray[bookIndex].url, bookArray[bookIndex].description];
+  const values = [author, title, isbn, url, description];
 
-  client.query(sql, values).then(response(getBooks));
+  client.query(sql, values).then(response.render('pages/books/details', {book: bookArray[request.params.result_id]}));
 }
-
 
 function Book(bookObj, i){
   const placeHolderImage = 'https://i.imgur.com/J5LVHEL.jpg';
@@ -111,7 +114,7 @@ function Book(bookObj, i){
   this.description = bookObj.volumeInfo.description || 'no description available';
   this.url = bookObj.volumeInfo.imageLinks.thumbnail || placeHolderImage;
   this.isbn = bookObj.volumeInfo.industryIdentifiers[0].identifier;
-  this.tempId = i;
+  this.result_id = i;
 }
 
 function handleError(error, response){

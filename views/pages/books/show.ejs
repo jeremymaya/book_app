@@ -10,20 +10,9 @@
     </header>
     <main>
         <a href="/">Back to the list</a>
-      <div data-id="<%= book.id %>" >
-        <img src= <%= book.url %> >
-        <h2><%= book.title %></h2>
-        <h3><%= book.author %></h3>
-        <p><%= book.description %></p>
-        <section>
-          <%- include('details') %>
-        </section>
-      </div> 
-      <section>
+      
         <h2>Add this book</h2>
-        <form action="<%=`/update/${book.id}`%>" method="post">
-
-          <input type = 'hidden' name='_method' value="put">
+        <form action= "/add/<%= book.result_id %>" method="POST">
 
           <input type="text" name="title" value="<%- book.title %>" placeholder="Book Name">
           <input type="text" name="author" value="<%- book.author %>" placeholder="Book Title">
