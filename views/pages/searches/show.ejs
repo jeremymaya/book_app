@@ -11,15 +11,15 @@
     <main>
       <h2>Search Results</h2>
       <section>
-          <% books.forEach(book => { %>
-          <div>
-            <img src= <%= book.url %>>
-            <h2><%= book.title %></h2>
-            <h3><%= book.author %></h3>
-            <a href="/add/<%= book.result_id %>">Select This Book</a>
-          </div>
-            <% }) %>
-        </section>
+        <% books.forEach(book => { %>
+        <div>
+          <img src= <%= book.url %>>
+          <h2><%= book.title %></h2>
+          <h3><%= book.author %></h3>
+          <a href="/add/<%= book.result_id %>">Select this Book</a>
+        </div>
+          <% }) %>
+      </section>
     </main>
     <footer>
       <%- include('../../layouts/footer') %>

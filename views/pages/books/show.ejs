@@ -12,19 +12,28 @@
         <a href="/">Back to the list</a>
       
         <h2>Add this book</h2>
-        <form action= "/add/<%= book.result_id %>" method="POST">
 
+        <form id= action= "/add/<%= book.result_id %>" method="post">
           <input type="text" name="title" value="<%- book.title %>" placeholder="Book Name">
           <input type="text" name="author" value="<%- book.author %>" placeholder="Book Title">
           <textarea name="description" placeholder="Description of the book" cols='30' rows='10'><%= book.description %></textarea>
           <input type='text' name='isbn' value='<%-book.isbn %>' placeholder="ISBN">
           <input type="text" name="status" placeholder="Bookshelf">
-          <button type="submit">Add this book</button>
+          <button type="submit">Add to Database</button>
         </form>
+      <section>
+        <div data-id="<%= book.id %>" >
+          <img src= <%= book.url %>>
+          <h2><%= book.title %></h2>
+          <h3><%= book.author %></h3>
+        </div>
       </section>
     </main>
     <footer>
         <%- include('../../layouts/footer') %>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../../app.js"></script>
   </body>
 </html>
