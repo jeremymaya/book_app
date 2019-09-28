@@ -104,7 +104,7 @@ function saveSearchedBook (request, response){
   const sql = 'INSERT INTO books (author, title, isbn, url, description) VALUES ($1, $2, $3, $4, $5);';
   const values = [author, title, isbn, url, description];
 
-  client.query(sql, values).then(response.loadBooks);
+  client.query(sql, values).then(loadBooks(request, response));
 }
 
 function Book(bookObj, i){
